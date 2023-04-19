@@ -4,6 +4,7 @@ import org.apache.commons.csv.CSVRecord;
 import java.io.File;
 
 public class WordLengths {
+
     public int indexOfMax(int[] values){
         int max = 0;
         for(int i = 0; i < values.length; i++){
