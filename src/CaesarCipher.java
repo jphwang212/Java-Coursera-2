@@ -43,16 +43,19 @@ public class CaesarCipher {
         return encrypt.toString();
     }
     public void testEncrypt(){
-        String testString = "At noon be in the conference room with your hat on for a surprise party. YELL LOUD!";
-        String encrypted = encrypt(testString, 15);
-        System.out.println("Encrypted: " + encrypted);
+//        String testString = "At noon be in the conference room with your hat on for a surprise party. YELL LOUD!";
+//        String encrypted = encrypt(testString, 15);
+//        System.out.println("Encrypted: " + encrypted);
 //        FileResource fr = new FileResource();
 //        String message = fr.asString();
 //        int key = 0;
 //        String encrypted = encrypt(message, key);
 //        System.out.println("key is " + key + "\n" + encrypted);
-        String encrypted2 = encryptTwoKeys(testString, 8, 21);
-        System.out.println("Two key encrypt: " + encrypted2);
+//        String encrypted2 = encryptTwoKeys(testString, 8, 21);
+//        System.out.println("Two key encrypt: " + encrypted2);
+        String quizString = "Top ncmy qkff vi vguv vbg ycpx";
+        String encrypted2 = encryptTwoKeys(quizString, 2, 20);
+        System.out.println("Answer: " + encrypted2);
     }
     public static void main(String[] args) {
         CaesarCipher inst = new CaesarCipher();
