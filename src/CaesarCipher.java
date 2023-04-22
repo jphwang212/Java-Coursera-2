@@ -8,6 +8,9 @@ public class CaesarCipher {
         String evenKeys = encrypt(input, key1);
         String oddKeys = encrypt(input, key2);
         for(int i = 0; i < input.length(); i++){
+            if(encryptTwo.charAt(i) == ' '){
+                continue;
+            }
             if(i%2 == 0){
                 encryptTwo.setCharAt(i, evenKeys.charAt(i));
             } else {
@@ -18,27 +21,21 @@ public class CaesarCipher {
     }
     public String encrypt(String input, int key){
         String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        String lowerAlphabet = "abcdefghijklmnopqrstuvwxyz";
+        String shiftedAlphabet = alphabet.substring(key) + alphabet.substring(0, key);
         StringBuilder encrypt = new StringBuilder(input);
 
         for(int i = 0; i < encrypt.length(); i++){
-            int alphabetIdx;
-            if(Character.isLowerCase(input.charAt(i))){
-                alphabetIdx = lowerAlphabet.indexOf(input.charAt(i));
-            } else alphabetIdx = alphabet.indexOf(input.charAt(i));
+            int alphabetIdx = shiftedAlphabet.indexOf(Character.toUpperCase(input.charAt(i)));
             if(alphabetIdx == -1){
                 continue;
             }
-            alphabetIdx += key;
-            if(alphabetIdx >= 26){
-                alphabetIdx = (alphabetIdx % 26);
-            }
+            char changed = alphabet.charAt(alphabetIdx);
             if(Character.isLowerCase(input.charAt(i))){
-                encrypt.setCharAt(i, lowerAlphabet.charAt(alphabetIdx));
+                encrypt.setCharAt(i, Character.toLowerCase(changed));
             } else {
-                encrypt.setCharAt(i, alphabet.charAt(alphabetIdx));
+                encrypt.setCharAt(i, changed);
             }
-//            System.out.println(alphabetIdx);
+//            System.out.println(changed);
         }
         return encrypt.toString();
     }
