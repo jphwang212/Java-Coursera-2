@@ -50,8 +50,11 @@ public class CaesarCipher {
 //        System.out.println("key is " + key + "\n" + encrypted);
 //        String encrypted2 = encryptTwoKeys(testString, 8, 21);
 //        System.out.println("Two key encrypt: " + encrypted2);
-        String quizString = "Top ncmy qkff vi vguv vbg ycpx";
-        String encrypted2 = encryptTwoKeys(quizString, 2, 20);
+//        String quizString = "Top ncmy qkff vi vguv vbg ycpx";
+//        String testString = "Can you imagine life WITHOUT the internet AND computers in your pocket?";
+        String testString1 = "Hfs cpwewloj loks cd Hoto kyg Cyy.";
+        String encrypted2 = encryptTwoKeys(testString1, 14, 24);
+//        String encrypted = encrypt(testString, 15);
         System.out.println("Answer: " + encrypted2);
     }
     public static void main(String[] args) {

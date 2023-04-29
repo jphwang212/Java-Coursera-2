@@ -20,6 +20,9 @@ public class WordLengths {
             if(!Character.isLetter(word.charAt(0))){
                 length--;
             }
+            if(length < 1){
+                continue;
+            }
             if(!Character.isLetter(word.charAt(length - 1))){
                 length--;
             }

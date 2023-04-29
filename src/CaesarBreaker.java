@@ -2,10 +2,11 @@ import edu.duke.FileResource;
 
 public class CaesarBreaker {
     public void testDecrypt(){
-        String testString = "Akag tjw Xibhr awoa aoee xakex znxag xwko";
+//        String testString = "Akag tjw Xibhr awoa aoee xakex znxag xwko";
+//        String testString1 = "Aal uttx hm aal Qtct Fhljha pl Wbdl. Pvxvxlx!";
 //        String testString = "Top ncmy qkff vi vguv vbg ycpx";
-//        FileResource fr = new FileResource();
-//        String testString = fr.asString();
+        FileResource fr = new FileResource();
+        String testString = fr.asString();
 //        String halved = halfOfString(testString, 1);
 //        System.out.println("Half = " + halved);
         String test = decryptTwoKeys(testString);
