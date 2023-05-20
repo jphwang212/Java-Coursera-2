@@ -5,6 +5,10 @@ import java.util.ArrayList;
 public class CharactersInPlay {
     private ArrayList<String> CharacterNames;
     private ArrayList<Integer> CharacterCounts;
+    public CharactersInPlay(){
+        this.CharacterNames = new ArrayList<String>();
+        this.CharacterCounts = new ArrayList<Integer>();
+    }
     public void update(String person){
         if(this.CharacterNames.contains(person)){
             int idx = this.CharacterNames.indexOf(person);
@@ -16,6 +20,8 @@ public class CharactersInPlay {
         }
     }
     public void findAllCharacters(){
+        this.CharacterNames.clear();
+        this.CharacterCounts.clear();
         FileResource fr = new FileResource();
         for(String line : fr.lines()){
             if(line.contains(".")){
@@ -24,12 +30,20 @@ public class CharactersInPlay {
         }
     }
     public void tester(){
-        findAllCharacters();
+        this.findAllCharacters();
+        System.out.println();
         for(int i = 0; i < this.CharacterNames.size(); i++){
             System.out.println(this.CharacterNames.get(i) + ": " + this.CharacterCounts.get(i));
         }
+//        this.charactersWithNumParts(10, 15);
     }
-
+    public void charactersWithNumParts(int num1, int num2){
+        for(int i = 0; i < this.CharacterNames.size(); i++){
+            if(this.CharacterCounts.get(i) >= num1 && this.CharacterCounts.get(i) <= num2){
+                System.out.println("NumParts" + this.CharacterNames.get(i));
+            }
+        }
+    }
     public static void main(String[] args) {
         CharactersInPlay inst = new CharactersInPlay();
         inst.tester();

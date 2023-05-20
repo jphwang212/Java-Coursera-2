@@ -7,21 +7,22 @@ import java.util.Collections;
 public class WordFrequencies {
     private ArrayList<String> myWords;
     private ArrayList<Integer> myFreqs;
-    public WordFrequencies(ArrayList<String> words, ArrayList<Integer> freqs){
-        this.myWords = words;
-        this.myFreqs = freqs;
+    public WordFrequencies(){
+        this.myWords = new ArrayList<String>();
+        this.myFreqs = new ArrayList<Integer>();
     }
     public void findUnique(){
         this.myWords.clear();
         this.myFreqs.clear();
         FileResource fr = new FileResource();
         for(String s : fr.words()){
-            if(!myWords.contains(s)){
-                this.myWords.add(s);
+            String lowered = s.toLowerCase();
+            if(!myWords.contains(lowered)){
+                this.myWords.add(lowered);
+                this.myFreqs.add(this.myWords.indexOf(lowered), 0);
             }
-            int wordIdx = this.myWords.indexOf(s);
-            int nextValue = this.myFreqs.get(wordIdx);
-            this.myFreqs.set(wordIdx, nextValue + 1);
+            int nextValue = this.myFreqs.get(this.myWords.indexOf(lowered));
+            this.myFreqs.set(this.myWords.indexOf(lowered), nextValue + 1);
         }
     }
     public int findIndexOfMax(){
@@ -34,14 +35,16 @@ public class WordFrequencies {
         return maxIdx;
     }
     public void tester(){
-        findUnique();
+        this.findUnique();
         int maxIdx = findIndexOfMax();
         for(String s : this.myWords){
-            int idx = this.myFreqs.indexOf(s);
+            int idx = this.myWords.indexOf(s);
             int freq = this.myFreqs.get(idx);
             System.out.println(s + ": " + freq);
         }
         System.out.println("Index of max frequency: " + maxIdx);
+        System.out.println("Max frequency word: " + this.myWords.get(maxIdx));
+        System.out.println("Unique words: " + this.myFreqs.size());
     }
 
     public static void main(String[] args) {
