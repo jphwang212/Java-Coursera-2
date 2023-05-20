@@ -35,7 +35,7 @@ public class CharactersInPlay {
         for(int i = 0; i < this.CharacterNames.size(); i++){
             System.out.println(this.CharacterNames.get(i) + ": " + this.CharacterCounts.get(i));
         }
-//        this.charactersWithNumParts(10, 15);
+        charactersWithNumParts(10, 15);
     }
     public void charactersWithNumParts(int num1, int num2){
         for(int i = 0; i < this.CharacterNames.size(); i++){
