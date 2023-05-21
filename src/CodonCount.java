@@ -44,9 +44,9 @@ public class CodonCount {
         FileResource fr = new FileResource();
         String dna = fr.asString();
         String dnaUpper = dna.toUpperCase();
-        buildCodonMap(1, dnaUpper);
+        buildCodonMap(0, dnaUpper);
         System.out.println("Unique words: " + codonCount.size());
-        printCodonCounts(6,6);
+        printCodonCounts(7,7);
         String mostCommon = getMostCommonCodon();
         System.out.println("Most common: " + mostCommon);
         System.out.println("Count = " + codonCount.get(mostCommon));

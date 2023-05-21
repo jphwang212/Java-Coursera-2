@@ -64,10 +64,12 @@ public class WordsInFiles {
         buildWordFileMap();
         int maxNum = maxNumber();
         System.out.println("Max number of files = " + maxNum);
-        ArrayList<String> wordFiles = wordsInNumFiles(maxNum);
+        ArrayList<String> wordFiles = wordsInNumFiles(4);
         for(String file : wordFiles){
             printFilesIn(file);
         }
+        System.out.println("\nNumber of words = " + wordFiles.size());
+        printFilesIn("tree");
     }
     public static void main(String[] args) {
         WordsInFiles inst = new WordsInFiles();
