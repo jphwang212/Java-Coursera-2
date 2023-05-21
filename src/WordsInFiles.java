@@ -1,4 +1,5 @@
 import edu.duke.DirectoryResource;
+import edu.duke.FileResource;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -10,12 +11,15 @@ public class WordsInFiles {
         fileWords = new HashMap<String, ArrayList<String>>();
     }
     private void addWordsFromFile(File f){
-        for(String word : f.list()){
+        FileResource fr = new FileResource(f);
+        for(String word : fr.words()){
             String fileName = f.getName();
             if(fileWords.containsKey(word)){
                 ArrayList<String> fileNameList = fileWords.get(word);
-                fileNameList.add(fileName);
-                fileWords.put(word, fileNameList);
+                if(!fileNameList.contains(fileName)){
+                    fileNameList.add(fileName);
+                    fileWords.replace(word, fileNameList);
+                }
             } else {
                 ArrayList<String> fileList = new ArrayList<String>();
                 fileList.add(fileName);
@@ -51,8 +55,9 @@ public class WordsInFiles {
     }
     public void printFilesIn(String word){
         ArrayList<String> fileNames = fileWords.get(word);
+        System.out.println("\nFiles in " + word + ": ");
         for(String name : fileNames){
-            System.out.println(name + "\n");
+            System.out.print(name + ", ");
         }
     }
     public void tester(){

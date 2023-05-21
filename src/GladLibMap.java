@@ -8,6 +8,8 @@ import java.util.Random;
 
 public class GladLibMap {
 	private HashMap<String, ArrayList<String>> myMap;
+	private ArrayList<String> usedWordList;
+	private ArrayList<String> usedCategoryList;
 	private Random myRandom;
 
 	private static String dataSourceURL = "http://dukelearntoprogram.com/course3/data";
@@ -40,7 +42,8 @@ public class GladLibMap {
 
 	private String getSubstitute(String label) {
 		if(myMap.containsKey(label)){
-			return randomFrom(myMap.get(label));
+			ArrayList<String> randoms = myMap.get(label);
+			return randomFrom(randoms);
 		}
 		return "**UNKNOWN**";
 	}
@@ -53,7 +56,13 @@ public class GladLibMap {
 		}
 		String prefix = w.substring(0,first);
 		String suffix = w.substring(last+1);
-		String sub = getSubstitute(w.substring(first+1,last));
+		String category = w.substring(first+1,last);
+		String sub = getSubstitute(category);
+		if (usedWordList.contains(sub)){
+			return w;
+		}
+		usedWordList.add(sub);
+		usedCategoryList.add(category);
 		return prefix+sub+suffix;
 	}
 
@@ -107,13 +116,21 @@ public class GladLibMap {
 		}
 		return count;
 	}
-//	public int totalWordsConsidered(){
-//
-//	}
+	public int totalWordsConsidered(){
+		int wordsConsidered = 0;
+		for(String category : usedCategoryList){
+			wordsConsidered += myMap.get(category).size();
+		}
+		return wordsConsidered;
+	}
 	public void makeStory(){
+		usedWordList = new ArrayList<String>();
+		usedCategoryList = new ArrayList<String>();
 		System.out.println("\n");
 		String story = fromTemplate("data/madtemplate2.txt");
 		printOut(story, 60);
+		System.out.println("Total words = " + totalWordsInMap());
+		System.out.println("Total words considered = " + totalWordsConsidered());
 	}
 
 	public static void main(String[] args) {
