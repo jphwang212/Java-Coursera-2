@@ -142,7 +142,22 @@ public class LogAnalyzer
      }
 
      public ArrayList<String> iPsWithMostVisitsOnDay(HashMap<String, ArrayList<String>> visitsByDate, String day){
-         String dayWithMostVisits = dayWithMostIPVisits(visitsByDate);
-
+        ArrayList<String> visitsOnDay = visitsByDate.get(day);
+        ArrayList<String> answer = new ArrayList<String>();
+        HashMap<String, Integer> visited = new HashMap<String, Integer>();
+        for(String ip : visitsOnDay){
+            if(!visited.containsKey(ip)){
+                visited.put(ip, 1);
+            } else {
+                visited.put(ip, visited.get(ip) + 1);
+            }
+        }
+        for(String ip : visited.keySet()){
+            if(visited.get(ip) > 1){
+                answer.add(ip);
+            }
+        }
+        return answer;
      }
+
 }
