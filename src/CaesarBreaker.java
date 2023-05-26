@@ -20,7 +20,7 @@ public class CaesarBreaker {
         return half.toString();
     }
     public String decrypt(String encrypted){
-        CaesarCipher cc = new CaesarCipher();
+        CaesarCipherOld cc = new CaesarCipherOld();
         int[] freqs = countLetters(encrypted);
         int maxIdx = maxIndex(freqs);
         int diffKey = maxIdx - 4;
@@ -62,7 +62,7 @@ public class CaesarBreaker {
         return maxIdx;
     }
     public String decryptTwoKeys(String encrypted){
-        CaesarCipher cc = new CaesarCipher();
+        CaesarCipherOld cc = new CaesarCipherOld();
         String firstHalf = halfOfString(encrypted, 0);
         String secondHalf = halfOfString(encrypted, 1);
         int firstKey = getKey(firstHalf);
